@@ -15,6 +15,13 @@ const Home = () => {
 	const { dispatch, isMobileMenuVisible } = React.useContext(OptionsContext);
 
 	useLayoutEffect(() => {
+		//this wroks as a scroller, if in other page and we are in the midle of that page, when we go to this homepage, it will scroll
+		window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        })
+
 		function checkWindowSize() {
 			if(window.innerWidth >=768 ){
 				//this will force to remove the mobile view visibility -> false

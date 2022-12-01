@@ -7,7 +7,7 @@ const About = () => {
 			<section
 				className="about-section"
 				style={{
-					background: "rgb(241,255,95)",
+					// background: "rgb(241,255,95)",
 					background: colorPallete.topHeaderGradients.blue.backgroundGradient,
 				}}
 			>

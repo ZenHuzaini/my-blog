@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { pageType } from "./constants/constants";
 import Blog from "./pages/Blog";
-import BlogListSidebar from "./pages/Blog/BlogListSidebar";
 import Home from "./pages/Home";
 import Single from "./pages/Single";
 
