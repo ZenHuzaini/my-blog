@@ -1,6 +1,7 @@
 import React, { useLayoutEffect } from "react";
 import BlogListSidebar from "../components/Blog/BlogListSidebar";
 import Navigation from "../components/Navigation/Navigation";
+import Scroller from "../components/Scroller/Scroller";
 import SearchPopup from "../components/Search/Popup/SearchPopup";
 import Breadcrumb from "../components/Sections/Breadcrumb";
 import Footer from "../components/Sections/Footer";
@@ -12,30 +13,29 @@ const Single = ({ type }) => {
 	const { dispatch, isMobileMenuVisible } = React.useContext(OptionsContext);
 
 	useLayoutEffect(() => {
-			//this wroks as a scroller, if in other page and we are in the midle of that page, when we go to this homepage, it will scroll
-			window.scrollTo({
-				top: 0,
-				left: 0,
-				behavior: 'smooth'
-			})
-			
-		function checkWindowSize() {
-			if(window.innerWidth >=768 ){
-				//this will force to remove the mobile view visibility -> false
-				dispatch({type: contextType.SHOW_MOBILE_MENU, data: false})
-				dispatch({type: contextType.WINDOW_SIZE, data: [window.innerWidth, window.innerHeight]})
+		//this wroks as a scroller, if in other page and we are in the midle of that page, when we go to this homepage, it will scroll
+		window.scrollTo({
+			top: 0,
+			left: 0,
+			behavior: "smooth",
+		});
 
+		function checkWindowSize() {
+			if (window.innerWidth >= 768) {
+				//this will force to remove the mobile view visibility -> false
+				dispatch({ type: contextType.SHOW_MOBILE_MENU, data: false });
+				dispatch({ type: contextType.WINDOW_SIZE, data: [window.innerWidth, window.innerHeight] });
 			}
 		}
-		dispatch({type: contextType.WINDOW_SIZE, data: [window.innerWidth, window.innerHeight]})
+		dispatch({ type: contextType.WINDOW_SIZE, data: [window.innerWidth, window.innerHeight] });
 
-		window.addEventListener('resize', checkWindowSize);
-		checkWindowSize()
-		return () => window.removeEventListener('resize', checkWindowSize);
-	  // eslint-disable-next-line react-hooks/exhaustive-deps
-	  }, []);
+		window.addEventListener("resize", checkWindowSize);
+		checkWindowSize();
+		return () => window.removeEventListener("resize", checkWindowSize);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
-	const mobileClassName = "mobile-menu-visible"
+	const mobileClassName = "mobile-menu-visible";
 
 	let content;
 	switch (type) {
@@ -43,7 +43,7 @@ const Single = ({ type }) => {
 			content = (
 				<>
 					<Breadcrumb />
-					<BlogListSidebar/>
+					<BlogListSidebar />
 				</>
 			);
 			break;
@@ -52,7 +52,7 @@ const Single = ({ type }) => {
 			break;
 	}
 	return (
-		<div className={isMobileMenuVisible? mobileClassName: ""}>
+		<div className={isMobileMenuVisible ? mobileClassName : ""}>
 			<div class="page-wrapper">
 				{/* <div class="preloader"></div> */}
 
@@ -64,10 +64,11 @@ const Single = ({ type }) => {
 				{/* <!-- Main Footer --> */}
 				<Footer />
 				{/* <!-- End Footer --> */}
-
-				{/* <!--Search Popup--> */}
-			<SearchPopup/>
 			</div>
+			{/* <!--Search Popup--> */}
+			<SearchPopup />
+			{/* <!--Scroll to top--> */}
+			<Scroller />
 		</div>
 	);
 };
