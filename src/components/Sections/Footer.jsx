@@ -210,6 +210,9 @@ const Footer = () => {
                     <p>
                         © Copyright 2022 All Rights Reserved by <a href="index.html">Zen Huzaini</a>
                     </p>
+                    <p style={{fontSize:"2vh"}}>
+                        Made with love, crafted using React :)
+                    </p>
                 </div>
             </div>
         </div>

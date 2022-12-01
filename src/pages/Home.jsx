@@ -9,6 +9,7 @@ import Video from "../components/Sections/Video";
 import SearchPopup from "../components/Search/Popup/SearchPopup";
 import { contextType } from "../context/contextTypes";
 import { headerType } from "../constants/constants";
+import Map from "../components/Sections/Map/Map";
 
 
 const Home = () => {
@@ -62,11 +63,16 @@ const Home = () => {
 
 				{/* <!-- Register Section --> */}
 
+				{/* <!-- Video Section --> */}
+				<Video/>
+
 				{/* <!-- News Section --> */}
                 <Blog/>
 
-				{/* <!-- Video Section --> */}
-				<Video/>
+				
+
+<Map/>
+
 				{/* <!-- Main Footer --> */}
                 <Footer/>
 				
