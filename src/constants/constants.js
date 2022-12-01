@@ -1,5 +1,6 @@
 export const pageType = {
 	BLOG_LIST_SEDEBAR: "BLOG_LIST_SEDEBAR",
+	BLOG_CONTENT: "BLOG_CONTENT",
 };
 
 export const headerType = {

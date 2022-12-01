@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from "react";
-import BlogListSidebar from "../components/Blog/BlogListSidebar";
+import BlogContentOrListWithSidebar from "../components/Blog/BlogContentOrListWithSidebar";
 import Navigation from "../components/Navigation/Navigation";
 import Scroller from "../components/Scroller/Scroller";
 import SearchPopup from "../components/Search/Popup/SearchPopup";
@@ -33,7 +33,7 @@ const Single = ({ type }) => {
 		checkWindowSize();
 		return () => window.removeEventListener("resize", checkWindowSize);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	}, [type]);
 
 	const mobileClassName = "mobile-menu-visible";
 
@@ -43,11 +43,19 @@ const Single = ({ type }) => {
 			content = (
 				<>
 					<Breadcrumb />
-					<BlogListSidebar />
+					<BlogContentOrListWithSidebar contentType={pageType.BLOG_LIST_SEDEBAR} />
 				</>
 			);
 			break;
 
+		case pageType.BLOG_CONTENT:
+			content = (
+				<>
+					<Breadcrumb />
+					<BlogContentOrListWithSidebar contentType={pageType.BLOG_CONTENT} />
+				</>
+			);
+			break;
 		default:
 			break;
 	}

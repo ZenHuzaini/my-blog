@@ -17,8 +17,8 @@ const Navigation = ({ selectedHeaderType }) => {
 					<div className="auto-container clearfix">
 						<div className="logo-box">
 							<div className="logo">
-							<Link to={"/"} style={{ textDecoration: "none" }}>
-									<img src="images/zen-logo.png" style={{ width: 50 }} alt="" title="Zen" />
+								<Link to={"/"} style={{ textDecoration: "none" }}>
+									<img src="/images/zen-logo.png" style={{ width: 50 }} alt="" title="Zen" />
 								</Link>
 							</div>
 						</div>
@@ -54,8 +54,8 @@ const Navigation = ({ selectedHeaderType }) => {
 								<div className="collapse navbar-collapse clearfix" id="navbarSupportedContent">
 									<ul className="navigation clearfix">
 										<li className="">
-										<Link to={"/"} style={{ textDecoration: "none" }}>
-											<a href="contact.html">Home</a>
+											<Link to={"/"} style={{ textDecoration: "none" }}>
+												<a href="contact.html">Home</a>
 											</Link>
 										</li>
 										<li className="dropdown">
@@ -69,7 +69,7 @@ const Navigation = ({ selectedHeaderType }) => {
 												</li>
 											</ul>
 										</li>
-										<li className="dropdown">
+										<li className="dropdown current">
 											<a href="schedule.html">Adventure</a>
 											<ul>
 												<li>
