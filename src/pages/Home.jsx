@@ -6,21 +6,24 @@ import Blog from "../components/Sections/Blog";
 import { OptionsContext } from "../context/OptionsContextProvider";
 import Scroller from "../components/Scroller/Scroller";
 import Video from "../components/Sections/Video";
+import SearchPopup from "../components/Search/Popup/SearchPopup";
+import { contextType } from "../context/contextTypes";
+import { headerType } from "../constants/constants";
 
 
 const Home = () => {
 	const { dispatch, isMobileMenuVisible } = React.useContext(OptionsContext);
-	const [windowSize, setWidnowSize] = React.useState([])
 
 	useLayoutEffect(() => {
 		function checkWindowSize() {
 			if(window.innerWidth >=768 ){
 				//this will force to remove the mobile view visibility -> false
-				dispatch({type: "SHOW_MOBILE_MENU", data: false})
-				setWidnowSize([window.innerWidth, window.innerHeight])
+				dispatch({type: contextType.SHOW_MOBILE_MENU, data: false})
+				dispatch({type: contextType.WINDOW_SIZE, data: [window.innerWidth, window.innerHeight]})
+
 			}
 		}
-		setWidnowSize([window.innerWidth, window.innerHeight])
+		dispatch({type: contextType.WINDOW_SIZE, data: [window.innerWidth, window.innerHeight]})
 
 		window.addEventListener('resize', checkWindowSize);
 		checkWindowSize()
@@ -32,10 +35,10 @@ const Home = () => {
 	return (
 		<div className={isMobileMenuVisible? mobileClassName: ""}>
 			<div className="page-wrapper">
-				<div className="preloader"></div>
+				{/* <div className="preloader"></div> */}
 
 				{/* <!-- Main Header--> */}
-                <Navigation/>
+                <Navigation selectedHeaderType={headerType.MAIN_HEADER}/>
 				
 
 				{/* <!-- About Section --> */}
@@ -90,51 +93,7 @@ const Home = () => {
 			{/* <!-- End Color Switcher --> */}
 
 			{/* <!--Search Popup--> */}
-			<div id="search-popup" className="search-popup">
-				<div className="close-search theme-btn">
-					<span className="fas fa-window-close"></span>
-				</div>
-				<div className="popup-inner">
-					<div className="overlay-layer"></div>
-					<div className="search-form">
-						<form method="post" action="index.html">
-							<div className="form-group">
-								<fieldset>
-									<input
-										type="search"
-										className="form-control"
-										name="search-input"
-										value=""
-										placeholder="Search Here"
-										required
-									/>
-									<input type="submit" value="Search Now!" className="theme-btn" />
-								</fieldset>
-							</div>
-						</form>
-
-						<br />
-						<h3>Recent Search Keywords</h3>
-						<ul className="recent-searches">
-							<li>
-								<a href="/#">Seo</a>
-							</li>
-							<li>
-								<a href="/#">Bussiness</a>
-							</li>
-							<li>
-								<a href="/#">Events</a>
-							</li>
-							<li>
-								<a href="/#">Digital</a>
-							</li>
-							<li>
-								<a href="/#">Conferance</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
+			<SearchPopup />
 
 			{/* <!--Scroll to top--> */}
 			<Scroller/>

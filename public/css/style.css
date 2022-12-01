@@ -681,40 +681,6 @@ color:#ffffff;
 	color:#d24c59;
 }
 
-.preloader{
-	position:fixed;
-	left:0px;
-	top:0px;
-	width:100%;
-	height:100%;
-	z-index:999999;
-	background-color: #ffffff;
-	background-position:center center;
-	background-repeat:no-repeat;
-	background-image:url(../images/icons/preloader.svg);
-	background-size:100px;
-}
-
-.preloader:after{
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	content: "loading..";
-	-webkit-transform: translateX(-50%);
-	-moz-transform: translateX(-50%);
-	-ms-transform: translateX(-50%);
-	-o-transform: translateX(-50%);
-	transform: translateX(-50%);
-	margin-top: 45px;
-	font-size: 24px;
-	line-height: 1em;
-	color: #f20487;
-	text-decoration: underline;
-	font-family: "Ubuntu", sans-serif;
-	font-weight: 400;
-}
-
-
 img{
 	display:inline-block;
 	max-width:100%;

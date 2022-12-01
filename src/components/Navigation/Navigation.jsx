@@ -1,22 +1,25 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { headerClassType } from "../../constants/constants";
+import { contextType } from "../../context/contextTypes";
 import { OptionsContext } from "../../context/OptionsContextProvider";
 
-const Navigation = () => {
-	const { dispatch, isMobileMenuVisible } = React.useContext(OptionsContext);
+const Navigation = ({ selectedHeaderType }) => {
+	const { dispatch, isMobileMenuVisible, isSearchPopupVisible } = React.useContext(OptionsContext);
 
 	const [isAboutExpanded, setIsAboutExpanded] = useState(false);
 	const [isAdventureExpanded, setIsAdventureExpanded] = useState(false);
 
 	return (
 		<div>
-			<header className="main-header">
+			<header className={headerClassType[selectedHeaderType]}>
 				<div className="main-box">
 					<div className="auto-container clearfix">
 						<div className="logo-box">
 							<div className="logo">
-								<a href="index.html">
+							<Link to={"/"} style={{ textDecoration: "none" }}>
 									<img src="images/zen-logo.png" style={{ width: 50 }} alt="" title="Zen" />
-								</a>
+								</Link>
 							</div>
 						</div>
 
@@ -50,8 +53,10 @@ const Navigation = () => {
 
 								<div className="collapse navbar-collapse clearfix" id="navbarSupportedContent">
 									<ul className="navigation clearfix">
-										<li className="current">
+										<li className="">
+										<Link to={"/"} style={{ textDecoration: "none" }}>
 											<a href="contact.html">Home</a>
+											</Link>
 										</li>
 										<li className="dropdown">
 											<a href="about-us.html">About</a>
@@ -68,8 +73,11 @@ const Navigation = () => {
 											<a href="schedule.html">Adventure</a>
 											<ul>
 												<li>
-													<a href="schedule.html">Cycling</a>
+													<Link to={"/blog"} style={{ textDecoration: "none" }}>
+														<a href="schedule.html">Cycling</a>
+													</Link>
 												</li>
+
 												<li>
 													<a href="event-detail.html">Trekking</a>
 												</li>
@@ -92,11 +100,19 @@ const Navigation = () => {
 							{/* <!-- Outer box --> */}
 							<div className="outer-box">
 								{/* <!--Search Box--> */}
-								{/* <div className="search-box-outer">
-									<div className="search-box-btn">
+								<div className="search-box-outer">
+									<div
+										className="search-box-btn"
+										onClick={() => {
+											dispatch({
+												data: !isSearchPopupVisible,
+												type: contextType.SHOW_POP_UP_SEARCH,
+											});
+										}}
+									>
 										<span className="flaticon-search"></span>
 									</div>
-								</div> */}
+								</div>
 
 								{/* <!-- Button Box --> */}
 								<div className="btn-box">
@@ -132,7 +148,7 @@ const Navigation = () => {
 
 							<li className="dropdown">
 								<a href="about-us.html">About</a>
-								<ul style={{ display: isAboutExpanded?"block" : "none", marginLeft:"5%"}}>
+								<ul style={{ display: isAboutExpanded ? "block" : "none", marginLeft: "5%" }}>
 									<li>
 										<a href="about-us.html">Me</a>
 									</li>
@@ -140,16 +156,19 @@ const Navigation = () => {
 										<a href="pricing.html">Portofolio</a>
 									</li>
 								</ul>
-								<div className="dropdown-btn" onClick={()=>{
-										setIsAboutExpanded(!isAboutExpanded)
-									}} >
+								<div
+									className="dropdown-btn"
+									onClick={() => {
+										setIsAboutExpanded(!isAboutExpanded);
+									}}
+								>
 									<span className="fa fa-angle-down"></span>
 								</div>
 							</li>
 
 							<li className="dropdown">
 								<a href="about-us.html">Adventure</a>
-								<ul style={{ display: isAdventureExpanded?"block" : "none", marginLeft:"5%"}}>
+								<ul style={{ display: isAdventureExpanded ? "block" : "none", marginLeft: "5%" }}>
 									<li>
 										<a href="about-us.html">Cycling</a>
 									</li>
@@ -163,9 +182,12 @@ const Navigation = () => {
 										<a href="pricing.html">Explore</a>
 									</li>
 								</ul>
-								<div className="dropdown-btn"  onClick={()=>{
-										setIsAdventureExpanded(!isAdventureExpanded)
-									}} >
+								<div
+									className="dropdown-btn"
+									onClick={() => {
+										setIsAdventureExpanded(!isAdventureExpanded);
+									}}
+								>
 									<span className="fa fa-angle-down"></span>
 								</div>
 							</li>

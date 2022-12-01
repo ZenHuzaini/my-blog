@@ -1,6 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { pageType } from "./constants/constants";
 import Blog from "./pages/Blog";
+import BlogListSidebar from "./pages/Blog/BlogListSidebar";
 import Home from "./pages/Home";
+import Single from "./pages/Single";
 
 function App() {
 	return (
@@ -11,7 +14,7 @@ function App() {
 						<Route index element={<Home />} />
 
 						<Route path="blog">
-							<Route index element={<Blog />} />
+							<Route index element={<Single type={pageType.BLOG_LIST_SEDEBAR} />} />
 							<Route path=":url" element={<Blog />} />
 						</Route>
 

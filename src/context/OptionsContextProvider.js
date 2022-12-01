@@ -3,6 +3,8 @@ import { OptionsContextReducer } from "./OptionsContextReducer";
 
 const INITIAL_STATE = {
 	isMobileMenuVisible: false,
+	isSearchPopupVisible: false,
+	windowSize: [],
 };
 
 export const OptionsContext = createContext(INITIAL_STATE);
