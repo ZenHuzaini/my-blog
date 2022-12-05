@@ -5,6 +5,8 @@ import Scroller from "../components/Scroller/Scroller";
 import SearchPopup from "../components/Search/Popup/SearchPopup";
 import Breadcrumb from "../components/Sections/Breadcrumb";
 import Footer from "../components/Sections/Footer";
+import SEO from "../components/SEO/Seo";
+import { meta } from "../components/SEO/seoData";
 import { headerType, pageType } from "../constants/constants";
 import { contextType } from "../context/contextTypes";
 import { OptionsContext } from "../context/OptionsContextProvider";
@@ -42,6 +44,12 @@ const Single = ({ type }) => {
 		case pageType.BLOG_LIST_SEDEBAR:
 			content = (
 				<>
+					<SEO
+						description={meta.blogList.description}
+						title={meta.blogList.title}
+						link={meta.blogList.link}
+						keywords={meta.blogList.keywords}
+					/>
 					<Breadcrumb />
 					<BlogContentOrListWithSidebar contentType={pageType.BLOG_LIST_SEDEBAR} />
 				</>
